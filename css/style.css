@@ -3,9 +3,10 @@
     --main-color: #03a9f4;
 }
 
-.color-main{
+.color-main {
     color: var(--main-color);
 }
+
 body {
     font-family: 'Harmattan', sans-serif;
     font-family: 'Roboto', sans-serif;
@@ -144,46 +145,81 @@ body {
 
 }
 
-
-.setting-body .color {
-    width: 100% ;
+/* color setting */
+.setting-body .color, .setting-body .random-image-box {
+    width: 100%;
     text-align: center;
 }
-.setting-body .color h4{}
-.setting-body .color ul{
+
+.setting-body .color h4 {}
+
+.setting-body .color ul {
     display: flex;
     justify-content: space-around;
     padding: 0;
 
 }
-.setting-body .color li{
+
+.setting-body .color li {
     display: inline-block;
     width: 25px;
     height: 25px;
-   
+
     border-radius: 50%;
     cursor: pointer;
 }
-.setting-body .color li.active{
+
+.setting-body .color li.active {
     opacity: 1 !important;
 }
 
-.setting-body .color li:first-child{
+.setting-body .color li:first-child {
     background-color: #03a9f4;
     opacity: 0.3;
 }
-.setting-body .color li:nth-child(2){
+
+.setting-body .color li:nth-child(2) {
     background-color: #ADA2FF;
     opacity: 0.3;
 }
-.setting-body .color li:nth-child(3){
+
+.setting-body .color li:nth-child(3) {
     background-color: #FB2576;
     opacity: 0.3;
 }
-.setting-body .color li:nth-child(4){
+
+.setting-body .color li:nth-child(4) {
     background-color: #ff6c28;
     opacity: 0.3;
 }
+
+/* color setting */
+/* random image setting  */
+.setting-body .random-image-box .r-image-div {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.setting-body .random-image-box .r-image-div .yes,.setting-body .random-image-box .r-image-div .no {
+    background-color: var(--main-color);
+    border: none;
+    width: 50px;
+    height: 39px;
+    opacity: 0.6;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+}
+.setting-body .random-image-box .r-image-div .active{
+    opacity: 1 !important;
+}
+
+
+.setting-body .random-image-box input {
+    accent-color: var(--main-color);
+}
+
+/* random image setting  */
 /* setting box  */
 /* global section  */
 
