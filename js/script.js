@@ -128,13 +128,60 @@ window.onscroll = () => {
   let scrollHeight = skillSection.offsetHeight;
   let widowHeight = this.innerHeight;
   let windowScrollTop = this.pageYOffset;
+  let skillSpan = document.querySelectorAll(
+    ".skills .container .skills-section .skill-progress span"
+  );
   if (windowScrollTop > scrollTop + scrollHeight - widowHeight) {
-    let skillSpan = document.querySelectorAll(
-      ".skills .container .skills-section .skill-progress span"
-    );
     skillSpan.forEach((span) => {
-      span.style.width=span.dataset.skill;
+      span.style.width = span.dataset.skill;
+    });
+  } else {
+    skillSpan.forEach((span) => {
+      span.style.width = 0;
     });
   }
 };
 // end skill section
+
+// Start gallery section
+let galleryImage = document.querySelectorAll(".gallery img");
+galleryImage.forEach((g) => {
+  g.addEventListener("click", (e) => {
+    // create Element
+    let popup = document.createElement("div");
+    let popuplayout = document.createElement("div");
+    let popupBody = document.createElement("div");
+    let popupImage = document.createElement("img");
+    let popuph = document.createElement("h3");
+    let popupClose = document.createElement("p");
+    // add text
+    popuph.textContent = g.alt;
+    popupClose.textContent = "X";
+    // add src
+    popupImage.src = g.src;
+    // add class to elements
+    popup.classList.add("popup-gallery");
+    popuplayout.classList.add("popup-layout");
+    popupBody.classList.add("popup-body");
+    popupClose.classList.add("popup-close");
+
+    // append Child
+    popupBody.appendChild(popuph);
+    popupBody.appendChild(popupImage);
+    popupBody.appendChild(popupClose);
+    popup.appendChild(popupBody);
+    popup.appendChild(popuplayout);
+    document.body.appendChild(popup);
+  });
+});
+
+//close button
+document.addEventListener("click", (e) => {
+  if (
+    e.target.classList.value === "popup-close" ||
+    e.target.classList.value === "popup-layout"
+  ) {
+    document.querySelector(".popup-gallery").remove();
+  }
+});
+// end gallery section
