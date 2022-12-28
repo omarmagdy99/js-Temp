@@ -139,6 +139,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 100;
+    position: relative;
 }
 
 
@@ -439,6 +441,7 @@ body {
     text-align: center;
     color: var(--main-color);
 }
+
 .popup-gallery p {
     color: white;
     background-color: var(--main-color);
