@@ -3,7 +3,7 @@
     --main-color: #03a9f4;
 }
 
-.color-main {
+.main-color {
     color: var(--main-color);
 }
 
@@ -13,102 +13,8 @@ body {
 
 }
 
-@media (max-width: 768px) {
-    .landing-page .header-area .nav-show {
-        color: var(--main-color);
-        background-color: white;
-        border: none;
-        border-radius: 2px;
-        margin-right: 50px;
-        width: 60px;
-        height: 40px;
-        font-size: 30px;
-        cursor: pointer;
-    }
-
-    .landing-page .header-area .links {
-        height: 100vh;
-        position: fixed;
-        top: 0;
-        right: -100vw;
-        background-color: white;
-        max-width: 50vw;
-        transition: all 0.7s;
-        z-index: 10000;
-    }
-
-    .landing-page .header-area .links .close-icon {
-        color: black;
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        cursor: pointer;
-        font-size: 30px;
-        background-color: transparent;
-        border: none;
-    }
-
-    .landing-page .header-area .links ul {
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-    }
-
-    .landing-page .header-area .links li {
-        display: block;
-        border-bottom: 2px solid var(--main-color);
-    }
 
 
-    .landing-page .header-area .links li a {
-        color: black;
-        text-decoration: none;
-        transition: all 0.3s;
-        font-weight: bold;
-    }
-
-    .landing-page .header-area .links li a:hover, .landing-page .header-area .links li a.active {
-        color: var(--main-color);
-    }
-
-    .nav-layout {
-        top: 100px;
-        right: -40px;
-        width: 40px;
-        height: 40px;
-        position: absolute;
-        background-color: rgba(0, 0, 0, 0.459);
-        display: none;
-        z-index: 9999;
-    }
-}
-
-
-@media (min-width: 769px) {
-    .landing-page .header-area .links li {
-        display: inline-block;
-    }
-
-    .landing-page .header-area .links li a {
-        color: #fff;
-        text-decoration: none;
-        transition: all 0.3s;
-    }
-
-    .landing-page .header-area .links li a:hover, .landing-page .header-area .links li a.active {
-        color: var(--main-color);
-    }
-
-    .landing-page .header-area .links .close-icon {
-        display: none;
-    }
-
-    .landing-page .header-area .nav-show {
-        display: none;
-    }
-}
 
 
 /* setting box  */
@@ -200,7 +106,7 @@ body {
     justify-content: space-evenly;
 }
 
-.setting-body .random-image-box .r-image-div .yes,.setting-body .random-image-box .r-image-div .no {
+.setting-body .random-image-box .r-image-div .yes, .setting-body .random-image-box .r-image-div .no {
     background-color: var(--main-color);
     border: none;
     width: 50px;
@@ -210,7 +116,8 @@ body {
     font-size: 20px;
     color: white;
 }
-.setting-body .random-image-box .r-image-div .active{
+
+.setting-body .random-image-box .r-image-div .active {
     opacity: 1 !important;
 }
 
@@ -268,6 +175,27 @@ body {
 
 
 
+.landing-page .header-area .links li {
+    display: inline-block;
+}
+
+.landing-page .header-area .links li a {
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.landing-page .header-area .links li a:hover, .landing-page .header-area .links li a.active {
+    color: var(--main-color);
+}
+
+.landing-page .header-area .links .close-icon {
+    display: none;
+}
+
+.landing-page .header-area .nav-show {
+    display: none;
+}
 
 
 
@@ -296,3 +224,268 @@ body {
 }
 
 /* landing-page  */
+
+
+
+
+/* start service section  */
+.service {
+    text-align: center;
+    margin: 40px 0;
+
+}
+
+.service .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+}
+
+.service .container div {
+    padding: 10px 5px;
+    margin: 5px 10px;
+    border-left: solid 1px var(--main-color);
+    border-bottom: solid 1px var(--main-color);
+    position: relative;
+}
+
+.service .container div::after {
+    content: "";
+    width: 0.5px;
+    height: 80%;
+    background-color: var(--main-color);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transition: 0.3s;
+}
+
+.service .container div::before {
+    content: "";
+    height: 0.5px;
+    width: 90%;
+    background-color: var(--main-color);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.3s;
+}
+
+.service .ser-icon {
+    font-size: 30px;
+    color: var(--main-color);
+}
+
+.service h3 {}
+
+.service p {
+    color: #000000b0;
+    line-height: 20px;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+.service hr {
+    width: 50%;
+    transition: 0.3s;
+}
+
+
+.service .container :nth-child(1):hover hr, .service .container :nth-child(2):hover hr, .service .container :nth-child(3):hover hr, .service .container :nth-child(1):hover::before, .service .container :nth-child(2):hover::before, .service .container :nth-child(3):hover::before {
+    width: 100%;
+
+}
+
+.service .container :nth-child(1):hover::after, .service .container :nth-child(2):hover::after, .service .container :nth-child(3):hover::after {
+    height: 100%;
+
+}
+
+/* end service section  */
+
+
+
+/* start skill section  */
+.skills {
+    background-color: #f0f0f0;
+    margin: 10px 0;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.skills .container {
+    background-color: white;
+
+}
+
+.skills .container .skills-section {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.skills .container .skills-section h3 {
+    margin-left: 5px;
+    min-width: 100px;
+}
+
+.skills .container .skills-section .skill-progress {
+    width: 100%;
+    /* background-color: var(--main-color); */
+    /* opacity: 0.3; */
+    height: 40px;
+    margin: 10px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.skills .container .skills-section .skill-progress span {
+    content: "";
+    width: 0;
+    background-color: var(--main-color);
+    height: 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.7;
+    transition: all 0.4s;
+}
+
+.skills .container .skills-section .skill-progress::before {
+    content: "";
+    width: 100%;
+    background-color: var(--main-color);
+    height: 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.1;
+}
+
+/* end skill section  */
+
+
+/* start media  */
+@media (min-width:1200px) {
+    .container {
+        max-width: 1080px;
+        margin: auto;
+
+    }
+
+
+
+}
+
+@media (min-width:992px) and (max-width:1200) {
+
+    .container {
+        max-width: 982px;
+        margin: auto;
+
+    }
+
+
+
+}
+
+
+@media (max-width: 992px) {
+    .container {
+        max-width: 768px;
+        margin: auto;
+    }
+
+
+
+}
+
+
+
+@media (max-width: 768px) {
+    .container {
+        min-width: calc(100% - 10px);
+        margin: 0;
+        padding: 0 5px;
+    }
+
+    .landing-page .header-area .nav-show {
+        color: var(--main-color);
+        background-color: white;
+        border: none;
+        border-radius: 2px;
+        margin-right: 50px;
+        width: 60px;
+        height: 40px;
+        font-size: 30px;
+        cursor: pointer;
+        display: block;
+    }
+
+    .landing-page .header-area .links {
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        right: -100vw;
+        background-color: white;
+        max-width: 50vw;
+        transition: all 0.7s;
+        z-index: 10000;
+    }
+
+    .landing-page .header-area .links .close-icon {
+        color: black;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        cursor: pointer;
+        font-size: 30px;
+        background-color: transparent;
+        border: none;
+        display: inline-block;
+    }
+
+    .landing-page .header-area .links ul {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .landing-page .header-area .links li {
+        display: block;
+        border-bottom: 2px solid var(--main-color);
+    }
+
+
+    .landing-page .header-area .links li a {
+        color: black;
+        text-decoration: none;
+        transition: all 0.3s;
+        font-weight: bold;
+    }
+
+    .landing-page .header-area .links li a:hover, .landing-page .header-area .links li a.active {
+        color: var(--main-color);
+    }
+
+    .nav-layout {
+        top: 100px;
+        right: -40px;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.459);
+        display: none;
+        z-index: 9999;
+    }
+
+}
+
+/* end media  */

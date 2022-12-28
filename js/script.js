@@ -119,3 +119,22 @@ if (
 
 // random image ask button
 // setting box
+
+// start skill section
+// get data
+let skillSection = document.querySelector(".skills");
+window.onscroll = () => {
+  let scrollTop = skillSection.offsetTop;
+  let scrollHeight = skillSection.offsetHeight;
+  let widowHeight = this.innerHeight;
+  let windowScrollTop = this.pageYOffset;
+  if (windowScrollTop > scrollTop + scrollHeight - widowHeight) {
+    let skillSpan = document.querySelectorAll(
+      ".skills .container .skills-section .skill-progress span"
+    );
+    skillSpan.forEach((span) => {
+      span.style.width=span.dataset.skill;
+    });
+  }
+};
+// end skill section
