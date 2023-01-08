@@ -32,8 +32,12 @@ function randomSetImage() {
 let navShow = document.querySelector(".landing-page .header-area .nav-show");
 let navLayout = document.querySelector(".nav-layout");
 let settingList = document.querySelector(".setting-box");
+let settingIcon = document.querySelector(".setting-box .setting-icon .fa-gear");
 navShow.addEventListener("click", () => {
   settingList.classList.remove("setting-box-open");
+  document
+    .querySelector(".setting-box .setting-icon .fa-gear")
+    .classList.remove("fa-spin");
   navLayout.style.display = "block";
   navbarLinks.style.right = "0";
 });
@@ -92,7 +96,7 @@ function activeScroll(winTop, arrayLinks) {
   if (winTop >= sectionArea[4][1] && winTop <= sectionArea[5][1]) {
     activeFunction(sectionArea[4][0], arrayLinks);
   }
-  if (winTop >= sectionArea[5][1]&& winTop <= sectionArea[6][1]) {
+  if (winTop >= sectionArea[5][1] && winTop <= sectionArea[6][1]) {
     activeFunction(sectionArea[5][0], arrayLinks);
   }
   if (winTop >= sectionArea[6][1]) {
