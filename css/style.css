@@ -846,14 +846,50 @@ body {
     background-image: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)), url("../pic/contact-us.jpg");
     background-position: center;
     background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 
 }
 
+.contact-us .right-input, .contact-us .left-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+.contact-us .right-input input {
+    opacity: .5;
+    width: 90%;
+    height: 30px;
+    margin: 10px 0;
+    padding: 5px;
+}
 
-.contact-us .right-input input {}
+.contact-us .right-input input:focus-visible,.contact-us .left-input textarea:focus-visible {
+    opacity: 1;
+    outline: none;
+}
 
-.contact-us .right-input input {}
+.contact-us .left-input textarea {
+    opacity: .5;
+    margin-top: 55px ;
+    margin-bottom: 15px ;
+    width: 90%;
+    height: 181px;
+    resize: none;
+    
+}
+.contact-us .left-input input{
+    width: 128px;
+    height: 38px;
+    font-size: 20px;
+    opacity: .8;
+    cursor: pointer;
+}
+
 
 /* End contact-us */
 
@@ -963,6 +999,7 @@ body {
         transition: all 0.7s;
         z-index: 10000;
         box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        overflow-y: scroll;
 
     }
 
@@ -1033,7 +1070,7 @@ body {
 
     .contact-us .container {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(540px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     }
 }
 
@@ -1057,7 +1094,7 @@ body {
 
     .contact-us .container {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(540px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(720px, 1fr));
     }
 }
 

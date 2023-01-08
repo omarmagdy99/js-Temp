@@ -92,8 +92,11 @@ function activeScroll(winTop, arrayLinks) {
   if (winTop >= sectionArea[4][1] && winTop <= sectionArea[5][1]) {
     activeFunction(sectionArea[4][0], arrayLinks);
   }
-  if (winTop >= sectionArea[5][1]) {
+  if (winTop >= sectionArea[5][1]&& winTop <= sectionArea[6][1]) {
     activeFunction(sectionArea[5][0], arrayLinks);
+  }
+  if (winTop >= sectionArea[6][1]) {
+    activeFunction(sectionArea[6][0], arrayLinks);
   }
 }
 
