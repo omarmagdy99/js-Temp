@@ -1,3 +1,13 @@
+// get data
+let scrollToTop = document.querySelector(".scroll-top");
+let sectionNames = document.querySelectorAll(".section");
+let sectionArea = [];
+sectionNames.forEach((sectionName) => {
+  sectionArea.push([sectionName.classList[0], sectionName.offsetTop]);
+});
+let navbarPar = document.querySelector(".landing-page .header-area");
+
+// get data
 function randomSetImage() {
   // get landing page
   let landingPage = document.querySelector(".landing-page");
@@ -17,34 +27,93 @@ function randomSetImage() {
   // set array Image
 }
 
-// nave bar open button
+// nav bar open button
 
 let navShow = document.querySelector(".landing-page .header-area .nav-show");
 let navLayout = document.querySelector(".nav-layout");
+let settingList = document.querySelector(".setting-box");
 navShow.addEventListener("click", () => {
   settingList.classList.remove("setting-box-open");
   navLayout.style.display = "block";
   navbarLinks.style.right = "0";
 });
-// nave bar open button
+// nav bar open button
 
-// nave bar close button
+// nav bar close button
 let closeNav = document.querySelector(
   ".landing-page .header-area .links .close-icon"
 );
 let navbarLinks = document.querySelector(".landing-page .header-area .links");
+let lanadingPage = document.querySelector(".landing-page ");
 
 closeNav.addEventListener("click", function (e) {
   navLayout.style.display = "none";
   navbarLinks.style.right = "-100vw";
 });
-// nave bar close button
+// nav bar close button
+
+// Start navbar section click
+function goToSection(linksF) {
+  linksF.forEach((nav) => {
+    nav.addEventListener("click", (e) => {
+      e.preventDefault();
+      let sectionLocation = document.querySelector(
+        nav.dataset.section
+      ).offsetTop;
+      window.scrollTo({
+        top: sectionLocation,
+        behavior: "smooth",
+      });
+    });
+  });
+}
+let linksAn = document.querySelectorAll(".header-area ul a");
+goToSection(linksAn);
+let bulletsLink = document.querySelectorAll(".bullet-point");
+goToSection(bulletsLink);
+// end navbar section click
+// Start navbar active link Function
+function activeScroll(winTop, arrayLinks) {
+  arrayLinks.forEach((linkAn) => {
+    linkAn.classList.remove("active");
+  });
+  if (winTop >= sectionArea[0][1] && winTop <= sectionArea[1][1]) {
+    activeFunction(sectionArea[0][0], arrayLinks);
+  }
+  if (winTop >= sectionArea[1][1] && winTop <= sectionArea[2][1]) {
+    activeFunction(sectionArea[1][0], arrayLinks);
+  }
+  if (winTop >= sectionArea[2][1] && winTop <= sectionArea[3][1]) {
+    activeFunction(sectionArea[2][0], arrayLinks);
+  }
+  if (winTop >= sectionArea[3][1] && winTop <= sectionArea[4][1]) {
+    activeFunction(sectionArea[3][0], arrayLinks);
+  }
+  if (winTop >= sectionArea[4][1] && winTop <= sectionArea[5][1]) {
+    activeFunction(sectionArea[4][0], arrayLinks);
+  }
+  if (winTop >= sectionArea[5][1]) {
+    activeFunction(sectionArea[5][0], arrayLinks);
+  }
+}
+
+function activeFunction(sectionClassName, arrayLinks) {
+  arrayLinks.forEach((linkAn) => {
+    linkAn.classList.remove("active");
+    if (linkAn.dataset.section == `.${sectionClassName}`) {
+      linkAn.classList.add("active");
+    }
+    // document
+    //   .querySelector(`div[data-section='.${sectionClassName}']`)
+    //   .classList.add("active");
+  });
+}
+// End navbar active link Function
 
 // setting box
 
 // button show
 let settingButton = document.querySelector(".setting-box .setting-icon");
-let settingList = document.querySelector(".setting-box");
 settingButton.addEventListener("click", () => {
   settingList.classList.toggle("setting-box-open");
   document
@@ -118,12 +187,58 @@ if (
 // set random image by local storage
 
 // random image ask button
+
+//Start bullets link
+let bulletChoose = document.querySelector(".bullit-setting #cbx-3");
+let bulletPar = document.querySelector(".bullet");
+if (localStorage.getItem("bullets") === null) {
+  localStorage.setItem("bullets", "true");
+  bulletChoose.checked = true;
+} else {
+  if (localStorage.getItem("bullets") === "true") {
+    bulletChoose.checked = true;
+    bulletPar.style.display = "block";
+  } else {
+    bulletChoose.checked = false;
+    bulletPar.style.display = "none";
+  }
+}
+
+bulletChoose.addEventListener("change", (e) => {
+  localStorage.setItem("bullets", bulletChoose.checked);
+  if (e.target.checked) {
+    bulletPar.style.display = "block";
+  } else {
+    bulletPar.style.display = "none";
+  }
+});
+//End bullets link
+
+// Start reset option
+let resetButton = document.querySelector(".reset-option button");
+resetButton.addEventListener("click", (e) => {
+  localStorage.clear();
+  window.location.reload();
+});
+// end reset option
 // setting box
 
-// start skill section
 // get data
 let skillSection = document.querySelector(".skills");
+let lastScroll = 0;
 window.onscroll = () => {
+  //   // hide navbar when scroll to bottom
+  let nowScroll = window.scrollY;
+  if (lastScroll > nowScroll) {
+    navbarPar.style.top = "0";
+  } else {
+    navbarPar.style.top = "-110px";
+  }
+  lastScroll = nowScroll;
+  // hide navbar when scroll to bottom
+
+  // start skill section
+
   let scrollTop = skillSection.offsetTop;
   let scrollHeight = skillSection.offsetHeight;
   let widowHeight = this.innerHeight;
@@ -140,8 +255,32 @@ window.onscroll = () => {
       span.style.width = 0;
     });
   }
+  // end skill section
+
+  // Start navbar active link
+  activeScroll(window.scrollY, linksAn);
+  activeScroll(window.scrollY, bulletsLink);
+  // End navbar active link
+
+  // navbar color
+  if (windowScrollTop > 100) {
+    lanadingPage.classList.add("active");
+  } else {
+    lanadingPage.classList.remove("active");
+  }
+  // navbar color
+
+  // scroll to top button
+  if (windowScrollTop > 100) {
+    scrollToTop.style.bottom = "40px";
+  } else {
+    scrollToTop.style.bottom = "-60px";
+  }
+  scrollToTop.addEventListener("click", (e) => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+  // scroll to top button
 };
-// end skill section
 
 // Start gallery section
 let galleryImage = document.querySelectorAll(".gallery img");
@@ -185,3 +324,50 @@ document.addEventListener("click", (e) => {
   }
 });
 // end gallery section
+
+// Start testimonial
+// get data
+let upButton = document.querySelector(".ts-button .ts-button-up");
+let downButton = document.querySelector(".ts-button .ts-button-down");
+let personDiv = document.querySelectorAll(".ts-person");
+let letpersonLength = (personDiv.length - 1) * 310;
+let topValue = 0;
+// set action
+
+// up button
+upButton.addEventListener("click", (e) => {
+  if (topValue > -letpersonLength) {
+    topValue -= 310;
+    if (topValue > -letpersonLength) {
+      upButton.style.opacity = "1";
+    } else {
+      upButton.style.opacity = "0.5";
+    }
+    downButton.style.opacity = "1";
+    // change top value
+    personDiv.forEach((per) => {
+      per.style.cssText = `top:${topValue}px`;
+    });
+  }
+});
+
+// down button
+downButton.addEventListener("click", (e) => {
+  if (topValue < 0) {
+    topValue += 310;
+    if (topValue < 0) {
+      downButton.style.opacity = "1";
+    } else {
+      downButton.style.opacity = "0.5";
+    }
+    upButton.style.opacity = "1";
+
+    // change top value
+    personDiv.forEach((per) => {
+      per.style.cssText = `top:${topValue}px`;
+    });
+  } else {
+    downButton.style.opacity = "0.5";
+  }
+});
+// End testimonial

@@ -27,13 +27,14 @@ body {
     background-color: #fff;
     transition: 0.3s;
     z-index: 999;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 .setting-box .setting-icon {
     background-color: rgb(255, 255, 255);
     color: var(--main-color);
     position: absolute;
-    top: 100px;
+    top: 137px;
     right: -40px;
     width: 40px;
     height: 40px;
@@ -43,21 +44,25 @@ body {
     font-size: 28px;
     cursor: pointer;
     z-index: 999;
-
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
 }
 
 .setting-box-open {
     left: 0;
 
 }
+.setting-body{
+    overflow-y: scroll;
+    height: 100vh;
+}
 
 /* color setting */
 .setting-body .color, .setting-body .random-image-box {
     width: 100%;
     text-align: center;
+    margin-bottom: 50px;
 }
 
-.setting-body .color h4 {}
 
 .setting-body .color ul {
     display: flex;
@@ -104,6 +109,7 @@ body {
 .setting-body .random-image-box .r-image-div {
     display: flex;
     justify-content: space-evenly;
+
 }
 
 .setting-body .random-image-box .r-image-div .yes, .setting-body .random-image-box .r-image-div .no {
@@ -127,7 +133,106 @@ body {
 }
 
 /* random image setting  */
+/* Start bullet Link */
+.setting-body .bullit-setting, .reset-option {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.checkbox-wrapper-3 input[type="checkbox"] {
+    visibility: hidden;
+    display: none;
+}
+
+.checkbox-wrapper-3 .toggle {
+    position: relative;
+    display: block;
+    width: 40px;
+    height: 20px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transform: translate3d(0, 0, 0);
+}
+
+.checkbox-wrapper-3 .toggle:before {
+    content: "";
+    position: relative;
+    top: 3px;
+    left: 3px;
+    width: 34px;
+    height: 14px;
+    display: block;
+    background: #9A9999;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.checkbox-wrapper-3 .toggle span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    display: block;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(154, 153, 153, 0.5);
+    transition: all 0.2s ease;
+}
+
+.checkbox-wrapper-3 .toggle span:before {
+    content: "";
+    position: absolute;
+    display: block;
+    margin: -18px;
+    width: 56px;
+    height: 56px;
+    background: var(--main-color);
+    opacity: .6;
+    border-radius: 50%;
+    transform: scale(0);
+    opacity: 1;
+    pointer-events: none;
+}
+
+.checkbox-wrapper-3 #cbx-3:checked+.toggle:before {
+    background: var(--main-color);
+    opacity: .6;
+}
+
+.checkbox-wrapper-3 #cbx-3:checked+.toggle span {
+    background: var(--main-color);
+    transform: translateX(20px);
+    transition: all 0.2s cubic-bezier(0.8, 0.4, 0.3, 1.25), background 0.15s ease;
+    box-shadow: 0 3px 8px rgba(79, 46, 220, 0.2);
+}
+
+.checkbox-wrapper-3 #cbx-3:checked+.toggle span:before {
+    transform: scale(1);
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+/* End bullet Link */
+
+
+/* Start reset option  */
+.reset-option button {
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    padding: 4px 7px;
+    cursor: pointer;
+}
+
+/* End reset option  */
+
 /* setting box  */
+
+
 /* global section  */
 
 
@@ -150,11 +255,14 @@ body {
     display: flex;
     width: 100%;
     color: #fff;
-    padding-top: 25px;
+    padding: 25px 0;
     position: fixed;
     top: 0;
     left: 0;
+    transition: all .5s;
+
 }
+
 
 .landing-page .header-area .logo {
     width: 100%;
@@ -187,6 +295,8 @@ body {
     transition: all 0.3s;
 }
 
+
+
 .landing-page .header-area .links li a:hover, .landing-page .header-area .links li a.active {
     color: var(--main-color);
 }
@@ -197,6 +307,21 @@ body {
 
 .landing-page .header-area .nav-show {
     display: none;
+}
+
+.active .header-area {
+    background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+}
+
+.active .header-area .links li a {
+    color: black;
+    font-weight: 500;
+}
+
+.active .header-area .logo {
+    color: black;
 }
 
 
@@ -310,10 +435,10 @@ body {
 
 
 /* start skill section  */
-.skills {
+.skills, .time-line {
     background-color: #f6f6f6;
-    margin: 10px 0;
-    padding: 10px 0;
+    margin: 30px 0;
+    padding: 60px 0;
     text-align: center;
 }
 
@@ -425,9 +550,8 @@ body {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    max-width: 100%;
+    max-width: calc(100% - 50px);
     max-height: 100%;
-    min-height: 30%;
     background-color: white;
     z-index: 2;
     padding: 5px;
@@ -435,6 +559,7 @@ body {
 
 .popup-gallery img {
     max-width: 100%;
+    max-height: 85%;
 }
 
 .popup-gallery h3 {
@@ -460,8 +585,337 @@ body {
 }
 
 /* end gallery popup */
-/* end gallery section  */
+.time-line {
+    position: relative;
+    overflow: auto;
 
+}
+
+.time-line .year {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background-color: var(--main-color);
+    font-weight: bold;
+    padding: 5px;
+}
+
+.one-year {
+    position: relative;
+    margin: 20px;
+}
+
+.time-line .content::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2px;
+    height: calc(100% - 50px);
+    background-color: var(--main-color);
+
+}
+
+.time-line .content .time-left, .time-line .content .time-right {
+    background-color: white;
+    padding: 10px;
+    max-width: 40%;
+    position: relative;
+}
+
+.time-line .content .time-left {
+    float: left;
+    margin: 20px 0px 0px -13px
+}
+
+.clearfix {
+    clear: both;
+    display: table;
+}
+
+.time-line .content .time-right {
+    float: right;
+    margin: 20px -13px 0px 0px
+}
+
+.time-line .content .time-right ::after, .time-line .content .time-left ::after {
+    content: "";
+    position: absolute;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    border-top: 13px solid transparent;
+    border-bottom: 13px solid transparent;
+}
+
+.time-line .content .time-right ::after {
+    left: -13px;
+    border-right: 13px solid var(--main-color);
+    border-left: 13px solid transparent;
+}
+
+.time-line .content .time-left ::after {
+    right: -41px;
+    border-left: 13px solid var(--main-color);
+    border-right: 13px solid transparent;
+}
+
+
+
+
+/* end gallery section  */
+/* Start features */
+.features {
+    text-align: center;
+    margin: 20px 0;
+
+}
+
+.features .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.features .feature {}
+
+.features .feature p {
+    color: #545454;
+    letter-spacing: 1px;
+    line-height: 20px;
+}
+
+.features .feature h3 {
+    position: relative;
+}
+
+.features .feature h3::before {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 19%;
+    transform: translate(-50%, -50%);
+    height: 3px;
+    background-color: var(--main-color)
+}
+
+/* End features */
+
+/* Start testimonial */
+.testimonial {
+    width: 100%;
+    height: 100vh;
+    margin: 50px 0;
+    text-align: center;
+}
+
+.testimonial h2 {
+    color: var(--main-color);
+    position: relative;
+}
+
+.testimonial h2::before {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    width: 10%;
+    transform: translate(-50%, -50%);
+    height: 2px;
+    background-color: var(--main-color);
+}
+
+.testimonial .ts-body {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.testimonial .ts-body .ts-cart {
+    min-width: 50%;
+    width: 90%;
+    min-height: 50%;
+    height: 300px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonial .ts-body .ts-cart::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10%;
+    max-width: 80px;
+    height: 100%;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    background-color: var(--main-color);
+}
+
+.testimonial .ts-body .ts-cart .ts-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10%;
+    max-width: 80px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.testimonial .ts-body .ts-cart .ts-button .ts-button-down {
+    opacity: .5;
+}
+
+.testimonial .ts-body .ts-cart .ts-button div {
+    color: white;
+    font-size: 20px;
+    margin: 20px 0;
+    cursor: pointer;
+}
+
+.testimonial .ts-body .ts-cart::after {
+    content: "";
+    position: absolute;
+    top: -125px;
+    left: -125px;
+    width: 250px;
+    height: 250px;
+    background-color: var(--main-color);
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    border-radius: 50%;
+}
+
+.testimonial .ts-body .ts-cart .ts-person {
+    width: 80%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+    align-items: flex-start;
+    margin-top: 10px;
+    margin-left: 20px;
+    color: #505050;
+    transition: all .5s;
+    top: 0;
+}
+
+.testimonial .ts-body .ts-cart .ts-person .ts-header {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+    margin-left: 30px;
+
+}
+
+.testimonial .ts-body .ts-cart .ts-person .ts-header img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.testimonial .ts-body .ts-cart .ts-person p {
+    font-size: 95%;
+    padding-bottom: 10%;
+}
+
+.testimonial .ts-body .ts-cart .ts-person h4 {
+    font-size: 15px;
+    margin-top: -15px;
+}
+
+/* end testimonial */
+
+/* scroll to top button  */
+.scroll-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: -60px;
+    right: 40px;
+    width: 50px;
+    height: 50px;
+    color: white;
+    background-color: var(--main-color);
+    border-radius: 50%;
+    transition: all .5s;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+/* scroll to top button  */
+
+
+/* Start Bullet section  */
+.bullet {
+    position: fixed;
+    top: 50%;
+    right: 14px;
+    transform: translateY(-50%);
+    z-index: 500;
+}
+
+.bullet .bullet-point {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border: 2px solid var(--main-color);
+    border-radius: 50%;
+    margin: 21px 0;
+    cursor: pointer;
+}
+
+.bullet .active {
+    background-color: var(--main-color);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.bullet .bullet-point:hover .bullet-comment {
+    display: block;
+
+}
+
+.bullet .bullet-point .bullet-comment {
+
+    position: absolute;
+    left: -125px;
+    top: -6px;
+    background-color: var(--main-color);
+    color: white;
+    padding: 3px;
+    border-radius: 5px;
+    width: 106px;
+    display: none;
+    pointer-events: none;
+}
+
+.bullet .bullet-point .bullet-comment::after {
+    content: "";
+    position: absolute;
+    right: -18px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left: 10px solid var(--main-color);
+    border-right: 10px solid transparent;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    width: 0;
+    height: 0;
+}
+
+/* End  Bullet section  */
 
 /* start media  */
 @media (min-width:1200px) {
@@ -529,6 +983,8 @@ body {
         max-width: 50vw;
         transition: all 0.7s;
         z-index: 10000;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
     }
 
     .landing-page .header-area .links .close-icon {
@@ -569,7 +1025,7 @@ body {
     }
 
     .nav-layout {
-        top: 100px;
+        top: 137px;
         right: -40px;
         width: 40px;
         height: 40px;
@@ -578,6 +1034,13 @@ body {
         display: none;
         z-index: 9999;
     }
+
+    .popup-gallery .popup-body {
+        min-width: calc(100% - 50px);
+        max-height: 95%;
+
+    }
+
 
 }
 
