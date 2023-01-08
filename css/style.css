@@ -51,7 +51,8 @@ body {
     left: 0;
 
 }
-.setting-body{
+
+.setting-body {
     overflow-y: scroll;
     height: 100vh;
 }
@@ -274,7 +275,8 @@ body {
 .landing-page .header-area .links {
     width: 100%;
     text-align: right;
-    padding: 0 50px 0 0;
+    padding: 0;
+    text-align: left;
     margin: 0;
 }
 
@@ -837,6 +839,24 @@ body {
 
 /* end testimonial */
 
+
+/* Start contact-us */
+.contact-us {
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)), url("../pic/contact-us.jpg");
+    background-position: center;
+    background-size: cover;
+
+}
+
+
+
+.contact-us .right-input input {}
+
+.contact-us .right-input input {}
+
+/* End contact-us */
+
 /* scroll to top button  */
 .scroll-top {
     display: flex;
@@ -918,49 +938,8 @@ body {
 /* End  Bullet section  */
 
 /* start media  */
-@media (min-width:1200px) {
-    .container {
-        max-width: 1080px;
-        margin: auto;
-
-    }
-
-
-
-}
-
-@media (min-width:992px) and (max-width:1200) {
-
-    .container {
-        max-width: 982px;
-        margin: auto;
-
-    }
-
-
-
-}
-
-
-@media (max-width: 992px) {
-    .container {
-        max-width: 768px;
-        margin: auto;
-    }
-
-
-
-}
-
-
-
-@media (max-width: 768px) {
-    .container {
-        min-width: calc(100% - 10px);
-        margin: 0;
-        padding: 0 5px;
-    }
-
+/* navbar media  */
+@media (max-width: 991px) {
     .landing-page .header-area .nav-show {
         color: var(--main-color);
         background-color: white;
@@ -1043,5 +1022,79 @@ body {
 
 
 }
+
+/* navbar media  */
+@media (min-width: 300px) {
+    .container {
+        max-width: 300px;
+        margin: auto;
+        padding: 0 5px;
+    }
+
+    .contact-us .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(540px, 1fr));
+    }
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+        margin: auto;
+    }
+
+    .contact-us .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(540px, 1fr));
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+        margin: auto;
+    }
+
+    .contact-us .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(540px, 1fr));
+    }
+}
+
+
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+        margin: auto;
+    }
+
+    .contact-us .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+    }
+
+}
+
+@media (min-width:1200) {
+
+    .container {
+        max-width: 1140px;
+        margin: auto;
+
+    }
+
+    .contact-us .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(570px, 1fr));
+    }
+
+}
+
+
+
+
+
+
 
 /* end media  */
